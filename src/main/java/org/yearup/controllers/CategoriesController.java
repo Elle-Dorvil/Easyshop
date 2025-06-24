@@ -2,6 +2,7 @@ package org.yearup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.yearup.data.CategoryDao;
@@ -30,10 +31,7 @@ public class CategoriesController
 
     // add the appropriate annotation for a get action
     @GetMapping
-    public List<Category> getAll(@RequestParam(name = "category_id", required = false) int,
-                                 @RequestParam(name = "name", required = false),
-                                 @RequestParam(name = "description", required = false)
-                                 )
+    public List<Category> getAll()
     {
         try
         {
@@ -62,46 +60,72 @@ public class CategoriesController
     {
         try
         {
-            categoryDao = productDao.getById(id);
+            return productDao.listByCategoryId(categoryId);
         }
         catch(Exception ex)
         {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
+//
+//        if(categoryId == null)
+//        {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//        }
 
-        if(categoryId == null)
-        {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-
-        return categoryDao;
     }
 
     // get a list of product by categoryId
     // add annotation to call this method for a POST action
     // add annotation to ensure that only an ADMIN can call this function
-    public Category addCategory(@RequestBody Category category)
-    {
+    @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Category addCategory(@RequestBody Category category) {
+        try {
+            return categoryDao.create(category);
+        } catch (Exception ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
         // insert the category
-        return null;
     }
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
-    
+    @PutMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(path = "categories/{categoryId}", method = RequestMethod.PUT)
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
+        try{
+            categoryDao.update(id, category);
+
+        }catch (Exception ex)
+        {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
+
         // update the category by id
     }
 
 
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
-    @RequestMapping(path = "/categories/{categoryId}", method = RequestMethod.DELETE)
+    @DeleteMapping("{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable int id)
     {
-        categoryDao.delete(categoryId);
-        // delete the category by id
+        try{
+            var category = categoryDao.getById(id);
+
+            if (category == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+            categoryDao.delete(id);
+
+        } catch(Exception ex)
+        {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
     }
 }
