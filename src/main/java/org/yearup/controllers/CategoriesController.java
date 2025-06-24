@@ -62,25 +62,22 @@ public class CategoriesController
     {
         try
         {
-            product = productDao.getById(id);
+            categoryDao = productDao.getById(id);
         }
         catch(Exception ex)
         {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
 
-        if(product == null)
+        if(categoryId == null)
         {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
-        return product;
+        return categoryDao;
     }
 
     // get a list of product by categoryId
-        return null;
-    }
-
     // add annotation to call this method for a POST action
     // add annotation to ensure that only an ADMIN can call this function
     public Category addCategory(@RequestBody Category category)
@@ -91,6 +88,7 @@ public class CategoriesController
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
+    
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
         // update the category by id
@@ -99,8 +97,11 @@ public class CategoriesController
 
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
+    @RequestMapping(path = "/categories/{categoryId}", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable int id)
     {
+        categoryDao.delete(categoryId);
         // delete the category by id
     }
 }
