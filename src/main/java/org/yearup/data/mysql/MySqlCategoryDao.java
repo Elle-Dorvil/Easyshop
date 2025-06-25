@@ -133,6 +133,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
     // delete category
 
