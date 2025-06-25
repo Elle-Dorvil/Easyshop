@@ -7,8 +7,10 @@ import org.springframework.web.server.ResponseStatusException;
 import org.yearup.data.ProductDao;
 import org.yearup.data.ShoppingCartDao;
 import org.yearup.data.UserDao;
+import org.yearup.models.Product;
 import org.yearup.models.ShoppingCart;
 import org.yearup.models.User;
+import java.util.Map;
 
 import java.security.Principal;
 
@@ -27,7 +29,7 @@ public class ShoppingCartController
 
     @Autowired
     private ProductDao productDao;
-
+    private Product prinicpal;
 
 
     // each method in this controller requires a Principal object as a parameter

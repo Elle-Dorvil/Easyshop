@@ -1,7 +1,6 @@
 package org.yearup.data.mysql;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 import org.yearup.data.ShoppingCartDao;
 import org.yearup.models.Product;
