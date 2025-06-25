@@ -53,12 +53,20 @@ public class ShoppingCartController
 
     // add a POST method to add a product to the cart - the url should be
     // https://localhost:8080/cart/products/15 (15 is the productId to be added
-    @PostMapping
+    @PostMapping("/products/{productsId}")
     public void addProductToCart(@PathVariable int productId, Principal principal) {
         try {
             String username = principal.getName();
             User user = userDao.getByUserName(username);
             int userId = user.getId();
+
+            if (shoppingCartDao.isProductInCart(userId, productId)) {
+                shoppingCartDao.incrementQuantity(userId, productId);
+            } else {
+                shoppingCartDao.addpProductToCart(userId, productId, 1);
+            }
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
 
@@ -66,6 +74,9 @@ public class ShoppingCartController
     // add a PUT method to update an existing product in the cart - the url should be
     // https://localhost:8080/cart/products/15 (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated
+    @PutMapping("/products/{productId")
+    
+
 
 
     // add a DELETE method to clear all products from the current users cart
