@@ -34,7 +34,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
                 int categoryID = resultSet.getInt("category_id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
-                Category category = new Category(categoryID, name, description);
+                Category category = mapRow(resultSet);
                 categories.add(category);
             }
         } catch (SQLException e) {
