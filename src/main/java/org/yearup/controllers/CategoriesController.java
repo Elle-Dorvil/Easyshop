@@ -10,6 +10,7 @@ import org.yearup.data.ProductDao;
 import org.yearup.models.Category;
 import org.yearup.models.Product;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.List;
 
 @RestController
@@ -50,10 +51,23 @@ public class CategoriesController
     @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id)
     {
-        Category category = categoryDao.getById(id);
-        if (category == null) {
+        Category category = null;
+        try {
+            category = categoryDao.getById(id);
+        }
+        catch (Exception e)
+        {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad. ");
+
+        }
+
+        if (category == null)
+        {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found");
-        }return category;
+
+        }
+
+        return category;
 
     // get the category by id
 //        return categoryDao.getById(id);
