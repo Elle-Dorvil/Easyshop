@@ -10,7 +10,6 @@ import org.yearup.data.ProductDao;
 import org.yearup.models.Category;
 import org.yearup.models.Product;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.List;
 
 @RestController

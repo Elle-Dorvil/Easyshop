@@ -2,21 +2,18 @@
 Easyshop Application
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+EasyShop is a simple Java user friendly shopping cart application that allows users to browse products, add items to their cart, update quantities, and manage purchases with ease. The app ensures that each user's shopping cart is safely saved and stays the same even if they log out or close the app, so they can keep shopping without losing their cart. 
 
-![Class Diagram](path/to/your/class_diagram.png)
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
-
 - As an admin I want to add a category to keep the users updated on what's available
 - As an admin I want to update a category so that my users can stay up to date to any changes
-- As an admin I want to delete a category so I can keep my data organized and up to date
-- As an admin I want to view a category by ID so I can be specific with my search.
+- As an admin I want to delete a category, so I can keep my data organized and up to date
+- As an admin I want to view a category by ID, so I can be specific with my search.
 - As a user, seeing duplicate searches may be confusing.
-- As a user, I would like to add items to my cart so I know what Im purchasing.
-- As a user, I want to be able to log in and see my added products in my cart so I can keep track of what I want to purchase.
+- As a user, I would like to add items to my cart, so I know what I'm purchasing.
+- As a user, I want to be able to log in and see my added products in my cart, so I can keep track of what I want to purchase.
 
 - 
 ## Setup
@@ -41,12 +38,19 @@ Follow these steps to get your application running within IntelliJ IDEA:
 ## Technologies Used
 
 - Java: Corretto 17
-- My SQL Workbench
-- Postman
+- Spring Boot
+- MySQL Workbench
+- RESTful Web Services
+- Postman (API testing)
 
 ## Demo
 
 Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
+![Screenshot 2025-06-27 073402.png](../../../../../../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073402.png)
+![Screenshot 2025-06-27 073425.png](../../../../../../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073425.png)
+![Screenshot 2025-06-27 073442.png](../../../../../../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073442.png)
+![Screenshot 2025-06-27 073515.png](../../../../../../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073515.png)
+
 
 ![Application Screenshot](path/to/your/screenshot.png)
 
@@ -60,10 +64,10 @@ Outline potential future enhancements or functionalities you might consider addi
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- Raymond's' GitHub
+- Raymond's GitHub
 - ChatGPT
 - Youtube
-- 
+
 ## Thanks
 
 Express gratitude towards those who provided help, guidance, or resources:

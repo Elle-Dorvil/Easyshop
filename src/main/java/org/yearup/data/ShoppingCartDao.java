@@ -1,15 +1,15 @@
-package org.yearup.data;
-
-import org.yearup.models.ShoppingCart;
-
-public interface ShoppingCartDao
-{
-    ShoppingCart getByUserId(int userId);
-    // add additional method signatures here
-    boolean isProductInCart(int userId, int productId);
-    ShoppingCart addProductToCart(int userId, int productId, int quantity);
-    ShoppingCart removeProduct(int userId, int productId);
-    ShoppingCart updateQuantity(int userId, int productId, int quantity);
-    ShoppingCart clearCart(int userId);
-    int getQuantity(int userId, int productId);
-}
+//package org.yearup.data;
+//
+//import org.yearup.models.ShoppingCart;
+//
+//public interface ShoppingCartDao
+//{
+//    ShoppingCart getByUserId(int userId);
+//    // add additional method signatures here
+//    boolean isProductInCart(int userId, int productId);
+//    ShoppingCart addProductToCart(int userId, int productId, int quantity);
+////    ShoppingCart removeProduct(int userId, int productId);
+//    ShoppingCart updateQuantity(int userId, int productId, int quantity);
+//    ShoppingCart clearCart(int userId);
+//    int getQuantity(int userId, int productId);
+//}
