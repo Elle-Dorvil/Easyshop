@@ -2,7 +2,7 @@
 Easyshop Application
 ## Description of the Project
 
-EasyShop is a simple Java user friendly shopping cart application that allows users to browse products, add items to their cart, update quantities, and manage purchases with ease. The app ensures that each user's shopping cart is safely saved and stays the same even if they log out or close the app, so they can keep shopping without losing their cart. 
+EasyShop is a simple Java user-friendly shopping cart application that allows users to browse products, add items to their cart, update quantities, and manage purchases with ease. The app ensures that each user's shopping cart is safely saved and stays the same even if they log out or close the app, so they can keep shopping without losing their cart. 
 
 
 ## User Stories
@@ -15,7 +15,6 @@ EasyShop is a simple Java user friendly shopping cart application that allows us
 - As a user, I would like to add items to my cart, so I know what I'm purchasing.
 - As a user, I want to be able to log in and see my added products in my cart, so I can keep track of what I want to purchase.
 
-- 
 ## Setup
 
 Instructions on how to set up and run the project using IntelliJ IDEA.
@@ -44,10 +43,10 @@ Follow these steps to get your application running within IntelliJ IDEA:
 - Postman (API testing)
 
 ## Demo
-![Screenshot 2025-06-27 073402.png](../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073402.png)
-![Screenshot 2025-06-27 073425.png](../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073425.png)
-![Screenshot 2025-06-27 073442.png](../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073442.png)
-![Screenshot 2025-06-27 073515.png](../../../../Pictures/Screenshots/Screenshot%202025-06-27%20073515.png)
+![Screenshot 2025-06-27 073402.png](https://i.imgur.com/GAbqE2U.png)
+![Screenshot 2025-06-27 073425.png](https://i.imgur.com/aZOrSiq.png)
+![Screenshot 2025-06-27 073442.png](https://i.imgur.com/ShTGIri.png)
+![Screenshot 2025-06-27 073515.png](https://i.imgur.com/eX4IlmQ.png)
 
 
 ## Future Work
