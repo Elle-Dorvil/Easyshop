@@ -26,10 +26,6 @@ public class CategoriesController
         this.productDao = productDao;
     }
 
-
-    // create an Autowired controller to inject the categoryDao and ProductDao
-
-    // add the appropriate annotation for a get action
     @GetMapping
     @PreAuthorize("permitAll()")
     public List<Category> getAll()
@@ -44,8 +40,6 @@ public class CategoriesController
         }
     }
 
-
-    // add the appropriate annotation for a get action
     @GetMapping("/{id}")
     @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id)
@@ -67,13 +61,7 @@ public class CategoriesController
         }
 
         return category;
-
-    // get the category by id
-//        return categoryDao.getById(id);
     }
-
-    // the url to return all products in category 1 would look like this
-    // https://localhost:8080/categories/1/products
 
     @GetMapping("{categoryId}/products")
     @PreAuthorize("permitAll()")
@@ -87,17 +75,8 @@ public class CategoriesController
         {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
-//
-//        if(categoryId == null)
-//        {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//        }
-
     }
 
-    // get a list of product by categoryId
-    // add annotation to call this method for a POST action
-    // add annotation to ensure that only an ADMIN can call this function
     @PostMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -107,14 +86,10 @@ public class CategoriesController
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
-        // insert the category
     }
 
-    // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
-    // add annotation to ensure that only an ADMIN can call this function
     @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    @RequestMapping(path = "categories/{categoryId}", method = RequestMethod.PUT)
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
         try{
@@ -124,13 +99,8 @@ public class CategoriesController
         {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
-
-        // update the category by id
     }
 
-
-    // add annotation to call this method for a DELETE action - the url path must include the categoryId
-    // add annotation to ensure that only an ADMIN can call this function
     @DeleteMapping("{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @PreAuthorize("hasRole('ROLE_ADMIN')")

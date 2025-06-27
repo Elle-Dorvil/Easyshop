@@ -39,8 +39,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
         }
 
         return categories;
-        // get all categories
-//        return null;
     }
 
     @Override
@@ -55,8 +53,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
                 while (resultSet.next()) {
 
                     return mapRow(resultSet);
-                    // get category by id
-//
                 }
             }
         } catch (SQLException e) {
@@ -79,14 +75,11 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected > 0) {
-                // Retrieve the generated keys
                 ResultSet generatedKeys = statement.getGeneratedKeys();
 
                 if (generatedKeys.next()) {
-                    // Retrieve the auto-incremented ID
                     int categoryId = generatedKeys.getInt(1);
 
-                    // get the newly inserted category
                     return getById(categoryId);
                 }
             }
@@ -96,7 +89,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
             throw new RuntimeException(e);
         }
         return null;
-        // create a new category
     }
 
     @Override
@@ -132,8 +124,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
         }
 
     }
-    // delete category
-
 
     private Category mapRow(ResultSet row) throws SQLException {
         int categoryId = row.getInt("category_id");

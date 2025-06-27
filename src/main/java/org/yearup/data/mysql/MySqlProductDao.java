@@ -26,7 +26,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
         String sql = "SELECT * FROM products " +
                 "WHERE (category_id = ? OR ? = -1) " +
                 "AND (price >= ? OR ? = -1) " +
-                "AND (price <= ? OR ? = -1 ) " +//Added missing conditional filter to SQL query."   AND (price <= ? OR ? = -1) " +"   AND (color = ? OR ? = '') ";
+                "AND (price <= ? OR ? = -1 ) " +
                 "   AND (color = ? OR ? = '')";
 
         categoryId = categoryId == null ? -1 : categoryId;
@@ -137,14 +137,11 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected > 0) {
-                // Retrieve the generated keys
                 ResultSet generatedKeys = statement.getGeneratedKeys();
 
                 if (generatedKeys.next()) {
-                    // Retrieve the auto-incremented ID
                     int orderId = generatedKeys.getInt(1);
 
-                    // get the newly inserted category
                     return getById(orderId);
                 }
             }
